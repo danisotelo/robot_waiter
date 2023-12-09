@@ -1,0 +1,103 @@
+<root>
+	<World>
+		<!-- Números de matrícula de los estudiantes -->
+		<WorldInfo name="Restaurante con Robot Camarero. UPM 2023">
+			<RegisterNumber number="22086" /> <!-- Daniel Sotelo -->
+			<RegisterNumber number="22094" /> <!-- Jiajun Xu -->
+			<RegisterNumber number="16223" /> <!-- Vladyslav Korenyak -->
+		</WorldInfo>
+		<!-- Definición de la habitación -->
+		<FaceSetPart name="Sala Cuadrada 8x8">
+			<face>
+				<vertex>
+					{4.000000 , -3.000000, 0}
+					{4.000000 , 4.000000, 0}
+					{-4.000000 , 4.000000, 0}
+					{-4.000000 , -3.000000, 0}
+				</vertex>
+				<colour r="0.2" g="0.2" b="1" />
+			</face>
+			<face>
+				<vertex>
+					{0.000000 , 0.000000, 0}
+					{0.000000 , 2.000000, 0}
+					{7.000000 , 2.000000, 0}
+					{7.000000 , 0.000000, 0}
+				</vertex>
+				<orientation>{1.570796 , 0.000000, 1.570796}</orientation>
+				<position>{4.000000 , -3.000000, 0}</position>
+				<colour r="0.2" g="0.2" b="0.8" />
+			</face>
+			<face>
+				<vertex>
+					{0.000000 , 0.000000, 0}
+					{0.000000 , 2.000000, 0}
+					{8.000000 , 2.000000, 0}
+					{8.000000 , 0.000000, 0}
+				</vertex>
+				<orientation>{1.570796 , 0.000000, 3.141593}</orientation>
+				<position>{4.000000 , 4.000000, 0}</position>
+				<colour r="0.2" g="0.2" b="0.8" />
+			</face>
+			<face>
+				<vertex>
+					{0.000000 , 0.000000, 0}
+					{0.000000 , 2.000000, 0}
+					{7.000000 , 2.000000, 0}
+					{7.000000 , 0.000000, 0}
+				</vertex>
+				<orientation>{1.570796 , 0.000000, -1.570796}</orientation>
+				<position>{-4.000000 , 4.000000, 0}</position>
+				<colour r="0.2" g="0.2" b="0.8" />
+			</face>
+			<face>
+				<vertex>
+					{0.000000 , 0.000000, 0}
+					{0.000000 , 2.000000, 0}
+					{8.000000 , 2.000000, 0}
+					{8.000000 , 0.000000, 0}
+				</vertex>
+				<orientation>{1.570796 , 0.000000, 0.000000}</orientation>
+				<position>{-4.000000 , -3.000000, 0}</position>
+				<colour r="0.2" g="0.2" b="0.8" />
+			</face>
+		</FaceSetPart>
+
+		<!-- DEFINICIÓN DEL ROBOT CAMARERO CON SU POSICIÓN Y SU ORIENTACIÓN INICIAL -->
+		<Pioneer3ATSim name="Camarero">
+			<orientation> {0,0,0} </orientation>
+			<position> {0,0,0} </position>
+		</Pioneer3ATSim>
+
+		<!-- DEFINICIÓN DE SENSOR LÁSER LMS100 -->
+		<LMS100Sim name="LMS100" linkTo="$Camarero$">
+			<position> {0.1,0,0.4} </position>
+			<colour r="0" g="1" b="0" />
+		</LMS100Sim>
+
+		<!-- DEFINICIÓN DE 3 SENSORES DE ULTRASONIDOS FRONTALES -->
+		<UltrasonicSensor name="uc0" linkTo="$Camarero$">
+			<orientation> {0,-0.1,0} </orientation>
+			<position> {0.2,0,0.2} </position>
+			<colour r="0" g="1" b="0" />
+		</UltrasonicSensor>
+
+		<UltrasonicSensor name="ul1" linkTo="$Camarero$">
+			<orientation> {0,-0.1,0.7} </orientation>
+			<position> {0.18,0.11,0.2} </position>
+			<colour r="0" g="1" b="0" />
+		</UltrasonicSensor>
+
+		<UltrasonicSensor name="ur1" linkTo="$Camarero$">
+			<orientation> {0,-0.1,-0.7} </orientation>
+			<position> {0.18,-0.11,0.2} </position>
+			<colour r="0" g="1" b="0" />
+		</UltrasonicSensor>
+
+		<!-- DEFINICIÓN DE BALIZAS -->
+		<LandMark name="LM1" mark_id="1">
+			<position> {3,2,0.4} </position>
+		</LandMark>
+
+	</World>
+</root>
