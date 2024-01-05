@@ -3,31 +3,7 @@ close all
 % Mapa del entorno
 nombre_archivo = 'mapa.txt';
 
-% Utiliza dlmread para leer los datos del archivo y almacenarlos en una variable
 map = dlmread(nombre_archivo);
-%map = [ ...
-% % x=0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 4
-%     0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 19
-%     0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 18
-%     0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ; ... # y = 17
-%     0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ; ... # y = 16
-%     0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ; ... # y = 15
-%     0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ; ... # y = 14
-%     0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ; ... # y = 13
-%     0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ; ... # y = 12
-%     0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0 ; ... # y = 11
-%     0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ; ... # y = 10
-%     0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 ; ... # y = 9
-%     0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 ; ... # y = 8
-%     0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 ; ... # y = 7
-%     0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0 ; ... # y = 6
-%     0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ; ... # y = 5
-%     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 4
-%     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 3
-%     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 2
-%     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 1
-%     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ; ... # y = 0
-%     ];
 alturaMapa = size(map, 1);
 
 % Costes para el A*
@@ -77,7 +53,7 @@ costs = ones(size(map));
 
 %objetivoFinal = [10, 34]; %test10 obstaculo WIN
 %objetivoFinal = [41, 34]; %test11 WIN
-objetivoFinal = [42, 28];
+%objetivoFinal = [42, 28];
 
 
 %%% DEBUGGING %%%
@@ -120,9 +96,10 @@ while ~isequal(round(2*(Xk(1:2)')), objetivoFinal)
 
     %%%% PLANIFICACIÓN START %%%
     % Convertir la posición actual del robot en coordenadas del mapa
-    posSegunSimulador = apoloGetLocation('Camarero'); % Esto devuelve un vector de 6 elementos
+    posSegunSimulador2 = apoloGetLocation('Camarero'); % Esto devuelve un vector de 6 elementos
+    posSegunSimulador = Xk(1:2)';
     posSegunMatriz = [2*posSegunSimulador(1), alturaMapa - 2*posSegunSimulador(2)+1]; % Invertir 'y'
-    theta = posSegunSimulador(6);
+    theta = Xk(3);
 
     % Convertir coordenadas (x, y) a índices lineales para A*
     start = sub2ind(size(map), round(posSegunMatriz(2)), round(posSegunMatriz(1)));  % y from top and x from the left
