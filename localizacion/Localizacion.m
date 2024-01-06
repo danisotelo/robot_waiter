@@ -21,11 +21,12 @@ Pk_list = {};  % Crear una celda para almacenar Pk en cada iteración
 numObservacionesImprobables = 0; % Para contar cuantas observaciones improbables han habido según la distancia de Mahalanobis
 
 % Bucle principal del algoritmo
-numIteraciones = 1200; % Define cuántas iteraciones quieres realizar
+numIteraciones = 1000; % Define cuántas iteraciones quieres realizar
 for k = 1:numIteraciones
     % Movimiento aleatorio del robot
-    velLinear = rand * 0.2; % Velocidad lineal aleatoria (0 a 0.05 m/s)
-    velAngular = (rand - 0.5) * (pi/10); % Velocidad angular aleatoria (-pi/20 a pi/20 rad/s)
+    velLinear = rand * 0.2; % Velocidad lineal aleatoria 
+    %velLinear = -rand * 0.2; % Velocidad lineal aleatoria (marcha atrás)
+    velAngular = (rand - 0.5) * (pi/10); % Velocidad angular aleatoria 
     timestep = 0.1; % Intervalo de tiempo entre movimientos (100 ms)
 
     apoloMoveMRobot('Camarero', [velLinear, velAngular], timestep);
@@ -43,7 +44,16 @@ for k = 1:numIteraciones
 
     % Obtención de Uk con apoloGetOdometry
     odometry = apoloGetOdometry('Camarero');
-    Uk = [sqrt(odometry(1)^2 + odometry(2)^2); odometry(3)];
+    disp(odometry)
+
+    % Verificar si odometry(1) 
+    if odometry(1) < 0
+        % Si odometry(1) negativo, calcular Uk con signo negativo en el desplazamiento
+        Uk = [sqrt(odometry(1)^2 + odometry(2)^2); -(2*pi-odometry(3))];
+    else
+        % Si no, calcular Uk normalmente
+        Uk = [sqrt(odometry(1)^2 + odometry(2)^2); odometry(3)];
+    end
 
     if isempty(laserLandmarks.id)
         % No hay balizas visibles, utilizar solo odometría
