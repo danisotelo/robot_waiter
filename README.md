@@ -1,7 +1,7 @@
 # Waiter Robot
 The following is a MATLAB code to simulate the guidance and navigation of a waiter robot in a japanese restaurant. The project was part of the subject "Guidance and Navigation of Robots" at Technical University of Madrid (UPM). The program makes use of the simulation program Apolo, which communicates with MATLAB. The employed robot is the Pioneer 3-AT with a differential locomotion system. It accounts with a laser telemeter to locate itself in the restaurant thanks to several beacons disposed along the restaurant using Extended Kalman Filter algorithm. The robot additionally includes three ultrasonic sensors to be able to perform react control. The program uses the A* algorithm for free-collision trajectory planning. This repository includes the files used for sensor calibration, localization, planning and control.
 
-[<img src="https://github.com/danisotelo/robot_waiter/blob/main/img/readme_img.gif" width="100%">](https://www.youtube.com/watch?v=LhBZU4BIHkA)
+[<img src="https://github.com/danisotelo/robot_waiter/blob/main/img/readme_img.png" width="100%">](https://www.youtube.com/watch?v=LhBZU4BIHkA)
 
 ## Getting Started
 ### Cloning the Repository
